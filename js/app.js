@@ -38,6 +38,10 @@ async function sendMessage() {
   );
 
   const result = await response.json();
+  // hapus loading
+document.getElementById("loading").remove();
+
+chatBox.innerHTML += `<div class="message bot">${botText}</div>`;
   const botText = result.data[0];
 
   chatBox.innerHTML += `<div class="message bot">${botText}</div>`;
