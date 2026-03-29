@@ -5,13 +5,14 @@ async function sendMessage() {
   const userText = input.value;
   if (!userText) return;
 
-  // ✅ tampilkan user dulu
+  // tampilkan user
   chatBox.innerHTML += `<div class="message user">${userText}</div>`;
   input.value = "";
 
+  // loading
   chatBox.innerHTML += `<div class="message bot" id="loading">...</div>`;
 
-  // ✅ baru cek knowledge
+  // cek knowledge
   let found = null;
 
   for (let key in knowledge) {
@@ -21,13 +22,13 @@ async function sendMessage() {
     }
   }
 
-  // ✅ kalau ketemu → stop di sini
   if (found) {
+    document.getElementById("loading").remove(); // 🔥 WAJIB
     chatBox.innerHTML += `<div class="message bot">${found}</div>`;
     return;
   }
 
-  // 🤖 kalau ga ketemu → lanjut ke AI
+  // AI call
   const response = await fetch(
     "https://huggingface.co/spaces/komanglegolas/chatbot-hr/run",
     {
@@ -38,11 +39,11 @@ async function sendMessage() {
   );
 
   const result = await response.json();
+  const botText = result.data[0]; // ✅ taruh sebelum dipakai
+
   // hapus loading
-document.getElementById("loading").remove();
+  document.getElementById("loading").remove();
 
-chatBox.innerHTML += `<div class="message bot">${botText}</div>`;
-  const botText = result.data[0];
-
+  // tampilkan bot (cuma sekali)
   chatBox.innerHTML += `<div class="message bot">${botText}</div>`;
 }
