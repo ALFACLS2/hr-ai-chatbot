@@ -9,6 +9,8 @@ async function sendMessage() {
   chatBox.innerHTML += `<div class="message user">${userText}</div>`;
   input.value = "";
 
+  chatBox.innerHTML += `<div class="message bot" id="loading">...</div>`;
+
   // ✅ baru cek knowledge
   let found = null;
 
