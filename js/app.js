@@ -29,8 +29,8 @@ async function sendMessage() {
   }
 
   // AI call
-  const response = await fetch(
-    "https://huggingface.co/spaces/komanglegolas/chatbot-hr/run",
+const response = await fetch(
+  "https://komanglegolas-chatbot-hr.hf.space/run",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
