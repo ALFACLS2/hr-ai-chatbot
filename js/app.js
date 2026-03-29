@@ -4,6 +4,19 @@ async function sendMessage() {
 
   const userText = input.value;
   if (!userText) return;
+  let found = null;
+
+for (let key in knowledge) {
+  if (userText.toLowerCase().includes(key)) {
+    found = knowledge[key];
+    break;
+  }
+}
+
+if (found) {
+  chatBox.innerHTML += `<div class="message bot">${found}</div>`;
+  return;
+}
 
   chatBox.innerHTML += `<div class="message user">${userText}</div>`;
   input.value = "";
