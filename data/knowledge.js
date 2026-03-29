@@ -1,6 +1,10 @@
-const knowledge = {
-  "cuti": "Pengajuan cuti dilakukan melalui HRIS.",
-  "izin": "Pengajuan izin dilakukan melalui HRIS.",
-  "resign": "Ajukan resign minimal 30 hari sebelumnya.",
-  "gaji": "Gaji dibayarkan setiap akhir bulan."
-};
+const knowledge = [
+  {
+    keywords: ["cuti", "izin", "leave"],
+    answer: "Pengajuan cuti dilakukan melalui HRIS."
+  },
+  {
+    keywords: ["resign", "keluar"],
+    answer: "Ajukan resign minimal 30 hari sebelumnya."
+  }
+];
